@@ -28,7 +28,7 @@
                     <div class="col-12 col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                            <div class="row">
+                                <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Name</label>
                                         <p>{{ $absence->name }}</p>
@@ -46,16 +46,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Waktu Masuk</label>
-                                        <p>{{ $absence->time_in }}</p>
-                                    </div>
-                                    <div class="form-group col-md-6 col-12">
-                                        <label>Waktu Pulang</label>
-                                        <p>{{ $absence->time_out }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-6 col-12">
                                         <label>Latitude</label>
                                         <p>{{ $absence->latitude }}</p>
                                     </div>
@@ -64,7 +54,53 @@
                                         <p>{{ $absence->longitude }}</p>
                                     </div>
                                 </div>
-                                
+
+                                <!-- Tampilkan semua sesi -->
+                                <h5>Sesi Absensi</h5>
+                                <div class="row">
+                                    <!-- Sesi 1 -->
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Masuk (Sesi 1)</label>
+                                        <p>{{ $absence->time_in }}</p>
+                                    </div>
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Pulang (Sesi 1)</label>
+                                        <p>{{ $absence->time_out }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Sesi 2 -->
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Masuk (Sesi 2)</label>
+                                        <p>{{ $absence->time_in_sesi2 ?? '-' }}</p>
+                                    </div>
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Pulang (Sesi 2)</label>
+                                        <p>{{ $absence->time_out_sesi2 ?? '-' }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Sesi 3 -->
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Masuk (Sesi 3)</label>
+                                        <p>{{ $absence->time_in_sesi3 ?? '-' }}</p>
+                                    </div>
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Pulang (Sesi 3)</label>
+                                        <p>{{ $absence->time_out_sesi3 ?? '-' }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Sesi 4 -->
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Masuk (Sesi 4)</label>
+                                        <p>{{ $absence->time_in_sesi4 ?? '-' }}</p>
+                                    </div>
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Waktu Pulang (Sesi 4)</label>
+                                        <p>{{ $absence->time_out_sesi4 ?? '-' }}</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer text-right">
                                 <a href="{{ route('absences.edit', $absence->id) }}" class="btn btn-primary">Edit Detail Absence</a>

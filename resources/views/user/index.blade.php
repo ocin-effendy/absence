@@ -41,6 +41,27 @@
                             <div class="card-header">
                                 <h4>All Users</h4>
                             </div>
+                            <div class="col-12">
+
+                            <form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="excel_file">Upload Excel File</label>
+                                    <input type="file" name="excel_file" id="excel_file" class="form-control" required>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-upload"></i> Import Users
+                                    </button>
+                                    <a href="{{ route('user.updatefacerecognition') }}" class="btn btn-success">
+                                        <i class="fas fa-download"></i> Update Face Recognition
+                                    </a>
+                                </div>
+                            </form>
+
+                            </div>
+
+                            
                             <div class="card-body">
                                 <div class="float-left">
                                     <form method="GET" action="{{ route('user.index') }}">
@@ -77,7 +98,7 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Category</th>
-                                            <th>Created At</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($users as $user)
@@ -94,7 +115,7 @@
                                                 {{$user->category->name ?? 'No Category'}}
                                             </td>
 
-                                            <td>{{$user->created_at }}</td>
+                                            <td>{{$user->address }}</td>
 
                                                <td>
                                                     <div class="d-flex justify-content-center">

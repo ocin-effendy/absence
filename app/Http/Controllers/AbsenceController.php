@@ -79,6 +79,12 @@ class AbsenceController extends Controller
             'radius_m' => 'required',
             'time_in' => 'required',
             'time_out' => 'required',
+            'time_in_sesi2' => 'nullable',
+            'time_out_sesi2' => 'nullable',
+            'time_in_sesi3' => 'nullable',
+            'time_out_sesi3' => 'nullable',
+            'time_in_sesi4' => 'nullable',
+            'time_out_sesi4' => 'nullable',
         ]);
 
         Absence::create([
@@ -89,6 +95,12 @@ class AbsenceController extends Controller
             'radius_m' => $request->radius_m,
             'time_in' => $request->time_in,
             'time_out' => $request->time_out,
+            'time_in_sesi2' => $request->time_in_sesi2,
+            'time_out_sesi2' => $request->time_out_sesi2,
+            'time_in_sesi3' => $request->time_in_sesi3,
+            'time_out_sesi3' => $request->time_out_sesi3,
+            'time_in_sesi4' => $request->time_in_sesi4,
+            'time_out_sesi4' => $request->time_out_sesi4,
         ]);
 
         return redirect()->route('absences.index')->with('success', 'Absence created successfully');
@@ -104,6 +116,12 @@ class AbsenceController extends Controller
             'radius_m' => 'required',
             'time_in' => 'required',
             'time_out' => 'required',
+            'time_in_sesi2' => 'nullable',
+            'time_out_sesi2' => 'nullable',
+            'time_in_sesi3' => 'nullable',
+            'time_out_sesi3' => 'nullable',
+            'time_in_sesi4' => 'nullable',
+            'time_out_sesi4' => 'nullable',
         ]);
 
         $absence->update([
@@ -114,6 +132,12 @@ class AbsenceController extends Controller
             'radius_m' => $request->radius_m,
             'time_in' => $request->time_in,
             'time_out' => $request->time_out,
+            'time_in_sesi2' => $request->time_in_sesi2,
+            'time_out_sesi2' => $request->time_out_sesi2,
+            'time_in_sesi3' => $request->time_in_sesi3,
+            'time_out_sesi3' => $request->time_out_sesi3,
+            'time_in_sesi4' => $request->time_in_sesi4,
+            'time_out_sesi4' => $request->time_out_sesi4,
         ]);
 
         return redirect()->route('absences.show', $absence->id)->with('success', 'Absence updated successfully');

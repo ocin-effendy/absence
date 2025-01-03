@@ -95,11 +95,11 @@
                                         </div>
                                     </form>
 
-                                    <div class="float-left mb-3">
-    <a href="{{ route('attendances.export') }}" class="btn btn-success">
-        <i class="fas fa-download"></i> Export to Excel
-    </a>
-</div>
+                                    <div class="float-left mb-3 mt-4">
+                                        <a href="{{ route('attendances.export', request()->all()) }}" class="btn btn-success">
+                                            <i class="fas fa-download"></i> Export to Excel
+                                        </a>
+                                    </div>
 
 
                                 </div>
@@ -113,8 +113,7 @@
                                             <th>Name</th>
                                             <th>Date</th>
                                             <th>Category</th>
-                                            <th>Time In</th>
-                                            <th>Time Out</th>
+                                            <th>Time</th>
                                             <th>Latlong In</th>
                                             <th>Latlong Out</th>
 
@@ -130,10 +129,7 @@
                                                 </td>
                                                 <td>{{ $attendance->category->name ?? 'No Category' }}</td>
                                                 <td>
-                                                    {{ $attendance->time_in }}
-                                                </td>
-                                                <td>
-                                                    {{ $attendance->time_out }}
+                                                    {{ $attendance->time }}
                                                 </td>
                                                 <td>
                                                     {{ $attendance->latlon_in }}

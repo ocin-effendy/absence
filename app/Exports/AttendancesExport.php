@@ -9,28 +9,26 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class AttendancesExport implements FromCollection, WithHeadings
 {
     /**
-     * @return \Illuminate\Support\Collection
+     * Retrieve data for export.
      */
     public function collection()
     {
-        // You can modify the query to filter based on request data, if needed
-        return Attendance::with('user', 'category') // eager load related models
+        return Attendance::with(['user', 'category'])
             ->get()
             ->map(function ($attendance) {
                 return [
-                    $attendance->user->name,
-                    $attendance->date,
-                    $attendance->category->name ?? 'No Category',
-                    $attendance->time_in,
-                    $attendance->time_out,
-                    $attendance->latlon_in,
-                    $attendance->latlon_out,
+                    'Name' => $attendance->user->name,
+                    'Date' => $attendance->date,
+                    'Category' => $attendance->category->name ?? 'No Category',
+                    'Time' => $attendance->time,
+                    'Latlong In' => $attendance->latlon_in,
+                    'Latlong Out' => $attendance->latlon_out,
                 ];
             });
     }
 
     /**
-     * @return array
+     * Define headings for the Excel file.
      */
     public function headings(): array
     {
@@ -38,8 +36,7 @@ class AttendancesExport implements FromCollection, WithHeadings
             'Name',
             'Date',
             'Category',
-            'Time In',
-            'Time Out',
+            'Time',
             'Latlong In',
             'Latlong Out',
         ];

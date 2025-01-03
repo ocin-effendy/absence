@@ -11,14 +11,21 @@ class Permission extends Model
 
     protected $fillable = [
         'user_id',
+        'absence_id',
         'date_permission',
         'reason',
         'image',
         'is_approved',
+        'approved_by',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function absence()
+    {
+        return $this->belongsTo(Absence::class);
     }
 }

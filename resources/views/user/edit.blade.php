@@ -122,6 +122,20 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Url Image</label>
+                                <input type="text"
+                                    class="form-control @error('image_url')
+                                is-invalid
+                            @enderror"
+                                    name="image_url" value="{{ $user->image_url }}">
+                                @error('departement')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label class="form-label">Gender</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">

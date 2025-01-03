@@ -1,5 +1,5 @@
 <?php
-
+    
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -19,66 +19,43 @@ class AuthController extends Controller
 
         $user = User::where('email', $loginData['email'])->first();
 
-        //check user exist
         if (!$user) {
             return response(['message' => 'Invalid credentials'], 401);
         }
 
-        //check password
         if (!Hash::check($loginData['password'], $user->password)) {
             return response(['message' => 'Invalid credentials'], 401);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response(['user' => $user, 'token' => $token], 200);
+        return response()->json([
+            'message' => 'Login Berhasil',
+            'user' => $user,
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 
-    //logout
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
-
         return response(['message' => 'Logged out'], 200);
     }
 
-    //update image profile & face_embedding
-    public function updateProfile(Request $request)
-    {
+
+    public function updateProfile(Request $request){
         $request->validate([
-            // 'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'face_embedding' => 'required',
+            'id' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
         ]);
 
-        $user = $request->user();
-        // $image = $request->file('image');
-        $face_embedding = $request->face_embedding;
+        $user = User::find($request->id);
 
-        // //save image
-        // $image->storeAs('public/images', $image->hashName());
-        // $user->image_url = $image->hashName();
-        $user->face_embedding = $face_embedding;
-        $user->save();
+        $user->update([
+            'address' => $request->address,
+            'phone' => $request->phone,
+        ]);
 
-        return response([
-            'message' => 'Profile updated',
+        return response()->json([
+            'message' => 'Update Berhasil',
             'user' => $user,
-        ], 200);
-    }
-
-    //update fcm token
-    public function updateFcmToken(Request $request)
-    {
-        $request->validate([
-            'fcm_token' => 'required',
-        ]);
-
-        $user = $request->user();
-        $user->fcm_token = $request->fcm_token;
-        $user->save();
-
-        return response([
-            'message' => 'FCM token updated',
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 }

@@ -17,6 +17,12 @@ class Absence extends Model
         'radius_m',
         'time_in',
         'time_out',
+        'time_in_sesi2',
+        'time_out_sesi2',
+        'time_in_sesi3',
+        'time_out_sesi3',
+        'time_in_sesi4',
+        'time_out_sesi4',
     ];
 
     public function category()
@@ -24,5 +30,8 @@ class Absence extends Model
         return $this->belongsTo(Category::class);
     }
 
-
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

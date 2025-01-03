@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2024-11-29 21:12:04
+Date: 2025-01-03 18:33:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,18 +28,89 @@ CREATE TABLE `absence` (
   `radius_m` varchar(255) NOT NULL,
   `time_in` varchar(255) NOT NULL,
   `time_out` varchar(255) NOT NULL,
+  `time_in_sesi2` varchar(255) DEFAULT NULL,
+  `time_out_sesi2` varchar(255) DEFAULT NULL,
+  `time_in_sesi3` varchar(255) DEFAULT NULL,
+  `time_out_sesi3` varchar(255) DEFAULT NULL,
+  `time_in_sesi4` varchar(255) DEFAULT NULL,
+  `time_out_sesi4` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of absence
 -- ----------------------------
-INSERT INTO `absence` VALUES ('1', 'Primary', '1', '55.731997,94.401315', '82.035758,-115.025435', '495', '07:00:08', '09:00:54', '2024-11-24 13:49:24', '2024-11-25 22:28:33');
-INSERT INTO `absence` VALUES ('2', 'Matematika', '2', '55.731997,94.401315', '82.035758,-115.025432', '250', '07:30', '08:00', '2024-11-25 22:34:05', '2024-11-25 22:34:05');
-INSERT INTO `absence` VALUES ('3', 'Biologi', '2', '-7.957206987206575', '112.61816098440514', '250', '13:34', '14:00', '2024-11-25 22:35:20', '2024-11-26 08:39:00');
-INSERT INTO `absence` VALUES ('6', 'Fisika', '1', '-6.172400197511298', '106.76945912133789', '250', '12:01', '13:01', '2024-11-27 04:24:43', '2024-11-27 04:33:29');
+INSERT INTO `absence` VALUES ('1', 'Primary', '1', '55.731997,94.401315', '82.035758,-115.025435', '495', '07:00:08', '09:00:54', null, null, null, null, null, null, '2024-11-24 13:49:24', '2024-11-25 22:28:33');
+INSERT INTO `absence` VALUES ('2', 'Matematika', '2', '55.731997,94.401315', '82.035758,-115.025432', '250', '07:30', '08:00', null, null, null, null, null, null, '2024-11-25 22:34:05', '2024-11-25 22:34:05');
+INSERT INTO `absence` VALUES ('3', 'Biologi', '2', '-7.986403988475149', '112.61654741363418', '250', '13:34', '15:00', '22:20', '22:30', '22:45', '23:50', null, null, '2024-11-25 22:35:20', '2024-12-29 14:26:14');
+INSERT INTO `absence` VALUES ('6', 'Fisika', '2', '-7.986355708983527', '112.61662421208666', '250', '12:01', '13:01', '18:17', '19:17', '19:30', '22:40', null, null, '2024-11-27 04:24:43', '2024-12-30 20:32:48');
+INSERT INTO `absence` VALUES ('7', 'rapat', '1', '-6.235651950062367', '106.78302037011719', '230', '15:37', '16:37', null, null, null, null, null, null, '2024-12-03 08:37:48', '2024-12-03 08:39:18');
+INSERT INTO `absence` VALUES ('8', 'dokumentasi', '1', '-6.221317512552811', '106.77460896264648', '59', '15:38', '16:38', '18:38', '19:38', null, null, null, null, '2024-12-03 08:38:42', '2024-12-03 08:38:42');
+INSERT INTO `absence` VALUES ('9', 'mengajar', '1', '-6.227080688253128', '106.80891036987305', '150', '04:40', '05:40', '17:40', '19:40', '19:41', '20:41', null, null, '2024-12-03 08:41:29', '2024-12-03 10:16:20');
+INSERT INTO `absence` VALUES ('10', 'notulensi', '1', '-7.946891200000002', '112.6161209', '200', '17:42', '18:42', '19:42', '20:42', '21:42', '22:42', '22:46', '23:50', '2024-12-03 08:43:07', '2024-12-08 23:07:13');
+INSERT INTO `absence` VALUES ('11', 'acc absen', '5', '-7.986352467456034', '112.61662869458267', '500', '08:03', '22:07', null, null, null, null, null, null, '2024-12-23 21:04:07', '2024-12-28 22:19:48');
+
+-- ----------------------------
+-- Table structure for `attendance`
+-- ----------------------------
+DROP TABLE IF EXISTS `attendance`;
+CREATE TABLE `attendance` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `absence_id` bigint(20) NOT NULL,
+  `category_id` bigint(20) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `latlon_in` varchar(255) NOT NULL,
+  `latlon_out` varchar(255) NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of attendance
+-- ----------------------------
+INSERT INTO `attendance` VALUES ('1', '11', '2', '2', '2024-12-05', '07:33:35', '18.976838', '76.114773', 'http://localhost', '2024-12-22 22:05:48', '2024-12-22 22:05:48');
+INSERT INTO `attendance` VALUES ('2', '12', '2', '2', '2024-12-05', '07:32:07', '18.976838', '76.114773', 'http://localhost', '2024-12-22 22:05:57', '2024-12-22 22:05:57');
+INSERT INTO `attendance` VALUES ('3', '13', '2', '2', '2024-12-05', '07:33:11', '18.976838', '76.114773', 'http://localhost', '2024-12-22 22:06:09', '2024-12-22 22:06:09');
+INSERT INTO `attendance` VALUES ('4', '15', '1', '1', '2024-12-05', '07:33:59', '18.976838', '76.114773', 'http://localhost', '2024-12-22 22:06:17', '2024-12-22 22:06:17');
+INSERT INTO `attendance` VALUES ('5', '11', '3', '2', '2024-12-07', '03:37:51', '-7.982078', '112.630982', 'http://localhost', '2024-12-09 22:02:22', '2024-12-09 22:02:22');
+INSERT INTO `attendance` VALUES ('6', '12', '3', '2', '2024-12-07', '13:35:35', '-7.982080', '112.630991', 'http://localhost', '2024-12-09 19:53:51', '2024-12-09 19:53:51');
+INSERT INTO `attendance` VALUES ('7', '13', '3', '2', '2024-12-07', '13:37:00', '-7.982080', '112.630991', 'http://localhost', '2024-12-09 19:53:57', '2024-12-09 19:53:57');
+INSERT INTO `attendance` VALUES ('8', '14', '1', '5', '2024-12-07', '07:37:58', '-7.982080', '112.630991', 'http://localhost', '2024-12-09 19:54:04', '2024-12-09 19:54:04');
+INSERT INTO `attendance` VALUES ('9', '15', '7', '1', '2024-12-07', '15:42:39', '-7.982080', '112.630991', 'http://localhost', '2024-12-09 19:54:33', '2024-12-09 19:54:33');
+INSERT INTO `attendance` VALUES ('10', '11', '6', '2', '2024-12-08', '12:37:38', '-7.982080', '112.630991', 'http://localhost', '2024-12-09 19:54:43', '2024-12-09 19:54:43');
+INSERT INTO `attendance` VALUES ('11', '12', '6', '2', '2024-12-08', '12:49:21', '-7.982080', '112.630991', 'http://localhost', '2024-12-09 19:54:48', '2024-12-09 19:54:48');
+INSERT INTO `attendance` VALUES ('12', '11', '6', '2', '2024-12-08', '18:45:05', '7.982080', '112.630991', 'http://localhost', '2024-12-10 22:45:32', '2024-12-10 22:45:32');
+INSERT INTO `attendance` VALUES ('13', '15', '9', '1', '2024-12-09', '05:00:47', '-7.982080', '112.630991', 'http://localhost', '2024-12-10 23:02:08', '2024-12-10 23:02:08');
+INSERT INTO `attendance` VALUES ('14', '15', '9', '1', '2024-12-09', '18:01:28', '-7.982080', '112.630991', 'http://localhost', '2024-12-10 23:02:14', '2024-12-10 23:02:14');
+INSERT INTO `attendance` VALUES ('15', '15', '9', '1', '2024-12-09', '20:02:25', '-7.982080', '112.630991', 'http://localhost', '2024-12-10 23:02:44', '2024-12-10 23:02:44');
+INSERT INTO `attendance` VALUES ('16', '15', '9', '1', '2024-12-10', '05:02:54', '-7.982080', '112.630991', 'http://localhost', '2024-12-10 23:03:07', '2024-12-10 23:03:07');
+INSERT INTO `attendance` VALUES ('17', '15', '9', '1', '2024-12-10', '18:03:54', '-7.982080', '112.630991', 'http://localhost', '2024-12-10 23:04:09', '2024-12-10 23:04:09');
+INSERT INTO `attendance` VALUES ('18', '15', '9', '1', '2024-12-10', '20:04:43', '-7.982080', '112.630991', 'http://localhost', '2024-12-10 23:04:53', '2024-12-10 23:04:53');
+INSERT INTO `attendance` VALUES ('19', '11', '2', '2', '2024-12-14', '21:38:22', '-7.982080', '112.630991', 'http://localhost', '2024-12-14 21:38:22', '2024-12-14 21:38:22');
+INSERT INTO `attendance` VALUES ('20', '12', '2', '2', '2024-12-14', '21:39:05', '-7.982080', '112.630991', 'http://localhost', '2024-12-14 21:39:05', '2024-12-14 21:39:05');
+INSERT INTO `attendance` VALUES ('21', '13', '2', '2', '2024-12-14', '21:43:01', '-7.982080', '112.630991', 'http://127.0.0.1:8000/storage/attendance_images/rVyiP9QAIs8FuMNDVj4dWDFQwgsYfoOeeywMLDlh.jpg', '2024-12-14 21:43:01', '2024-12-14 21:43:01');
+INSERT INTO `attendance` VALUES ('22', '11', '2', '2', '2024-12-14', '21:46:17', '-7.982080', '112.630991', 'http://127.0.0.1:8000/storage/attendance_images/Nao6az2gYgZLbrFe82uPoYB5bmHPnMlWTvmkrxmS.jpg', '2024-12-14 21:46:18', '2024-12-14 21:46:18');
+INSERT INTO `attendance` VALUES ('23', '12', '2', '2', '2024-12-22', '11:26:04', '-7.982080', '112.630991', 'http://127.0.0.1:8000/storage/attendance_images/tRoa3wtbHnwgWaUVxVUCoPp6bn867HW3451IINvV.jpg', '2024-12-22 11:26:04', '2024-12-22 11:26:04');
+INSERT INTO `attendance` VALUES ('24', '11', '2', '2', '2024-12-22', '11:34:53', '-7.982080', '112.630991', 'http://192.168.0.3:8000/storage/attendance_images/ecqTTEx21vZYZmJRH7F6aMRGt5KV8FuM21rdyrGh.jpg', '2024-12-22 11:34:53', '2024-12-22 11:34:53');
+INSERT INTO `attendance` VALUES ('25', '11', '2', '2', '2024-12-22', '11:41:46', '-7.982080', '112.630991', 'http://192.168.0.3:8000/storage/attendance_images/YwmmY7MkJn3JAJGArYchzFpqA7hDwLgZwpZ9ABAE.jpg', '2024-12-22 11:41:46', '2024-12-22 11:41:46');
+INSERT INTO `attendance` VALUES ('26', '11', '2', '2', '2024-12-22', '13:21:24', '-7.982080', '112.630991', 'http://172.20.10.5:8000/storage/attendance_images/HX88D3sS8NH6OMTCbXLTjJLG8FjnWNALYxqfUjeE.jpg', '2024-12-22 13:21:24', '2024-12-22 13:21:24');
+INSERT INTO `attendance` VALUES ('27', '11', '2', '2', '2024-12-22', '13:52:13', '-7.982080', '112.630991', 'http://192.168.0.2:8000/storage/attendance_images/omc4n5fLkmJYowbSU94sQEboHxigC6sTqAHbknBF.jpg', '2024-12-22 13:52:13', '2024-12-22 13:52:13');
+INSERT INTO `attendance` VALUES ('28', '11', '2', '2', '2024-12-22', '13:53:52', '-7.982080', '112.630991', 'http://192.168.0.2:8000/storage/attendance_images/b1LfhsAKzgJB55NDG2eR940is9aYc6o2YFyYzOkc.jpg', '2024-12-22 13:53:52', '2024-12-22 13:53:52');
+INSERT INTO `attendance` VALUES ('29', '11', '2', '2', '2024-12-22', '14:42:51', '-7.982080', '112.630991', 'http://192.168.0.2:8000/storage/attendance_images/iINfP8tXfiLqOj2vCp7JWdCCtlEhaoUe9Ppmx5tW.jpg', '2024-12-22 14:42:51', '2024-12-22 14:42:51');
+INSERT INTO `attendance` VALUES ('30', '11', '2', '2', '2024-12-23', '20:22:26', '-7.982080', '112.630991', 'http://192.168.17.234:8000/storage/attendance_images/HpMAKOzLOQHzIh2U5KpLiRjA76JcBjWGekVwhsal.jpg', '2024-12-23 20:22:26', '2024-12-23 20:22:26');
+INSERT INTO `attendance` VALUES ('31', '11', '2', '2', '2024-12-28', '13:56:18', '-7.982080', '112.630991', 'http://192.168.1.8:8000/storage/attendance_images/oCwmh6njhzlDb5grmM04wYNb0h3BoRxBtoCjR9kl.jpg', '2024-12-28 13:56:18', '2024-12-28 13:56:18');
+INSERT INTO `attendance` VALUES ('32', '11', '2', '2', '2024-12-28', '14:26:29', '-7.982080', '112.630991', 'http://192.168.1.8:8000/storage/attendance_images/6tCdAxVFeMVtklV4DBfMDnLPpzBCUhZgXLjKCVcx.jpg', '2024-12-28 14:26:29', '2024-12-28 14:26:29');
+INSERT INTO `attendance` VALUES ('33', '21', '11', '5', '2024-12-28', '14:28:03', '-7.9780613', '112.6692926', 'http://192.168.1.8:8000/storage/attendance_images/4a3ips9F6HualzYvseZ52ulQknNr3FQn6Uug3Ghw.jpg', '2024-12-28 14:28:03', '2024-12-28 14:28:03');
+INSERT INTO `attendance` VALUES ('34', '23', '11', '5', '2024-12-28', '22:20:59', '-7.9867777', '112.6165124', 'http://192.168.0.7:8000/storage/attendance_images/BKyqrZtNmwydgXJbMdxsrAMHzg4hUXW4i4hVmQuW.jpg', '2024-12-28 22:20:59', '2024-12-28 22:20:59');
+INSERT INTO `attendance` VALUES ('35', '24', '3', '2', '2024-12-29', '14:28:29', '-7.9867847', '112.6165147', 'http://192.168.0.3:8000/storage/attendance_images/GIpTP7MZfzdBUgoXpdL1aK2PKpy0qGl0OIv3Sxnl.jpg', '2024-12-29 14:28:29', '2024-12-29 14:28:29');
+INSERT INTO `attendance` VALUES ('36', '25', '6', '2', '2024-12-30', '20:44:39', '-7.9867639', '112.6165264', 'http://192.168.0.2:8000/storage/attendance_images/DQPzbXuttRgmajspXYKkNRSuzAOUCf2DZftinKJl.jpg', '2024-12-30 20:44:39', '2024-12-30 20:44:39');
+INSERT INTO `attendance` VALUES ('37', '25', '3', '2', '2024-12-30', '23:29:25', '-7.9867715', '112.6165281', 'http://192.168.0.4:8000/storage/attendance_images/ooLwD3sppk7a0oqZIo9lw1RZiPwAecNB3E6xmNRw.jpg', '2024-12-30 23:29:25', '2024-12-30 23:29:25');
 
 -- ----------------------------
 -- Table structure for `attendances`
@@ -99,28 +170,6 @@ CREATE TABLE `cache` (
 -- ----------------------------
 -- Records of cache
 -- ----------------------------
-INSERT INTO `cache` VALUES ('0cf01f171aa83b9bea2de0aa87deec5d', 'i:1;', '1732365262');
-INSERT INTO `cache` VALUES ('0cf01f171aa83b9bea2de0aa87deec5d:timer', 'i:1732365262;', '1732365262');
-INSERT INTO `cache` VALUES ('3fefef0d24f5a78558468ff0c583be79', 'i:1;', '1732373085');
-INSERT INTO `cache` VALUES ('3fefef0d24f5a78558468ff0c583be79:timer', 'i:1732373085;', '1732373085');
-INSERT INTO `cache` VALUES ('86970c70cc5649299dc89459bf238b31', 'i:1;', '1732368638');
-INSERT INTO `cache` VALUES ('86970c70cc5649299dc89459bf238b31:timer', 'i:1732368638;', '1732368638');
-INSERT INTO `cache` VALUES ('89f2e8460316bf43dcce797245b1ebee', 'i:1;', '1732365559');
-INSERT INTO `cache` VALUES ('89f2e8460316bf43dcce797245b1ebee:timer', 'i:1732365559;', '1732365559');
-INSERT INTO `cache` VALUES ('93a3e3d705467b4403dd1d0f9b22a3ce', 'i:1;', '1732373122');
-INSERT INTO `cache` VALUES ('93a3e3d705467b4403dd1d0f9b22a3ce:timer', 'i:1732373122;', '1732373122');
-INSERT INTO `cache` VALUES ('9cf57a4c244a2b0ddd14afe553fd1068', 'i:1;', '1732365291');
-INSERT INTO `cache` VALUES ('9cf57a4c244a2b0ddd14afe553fd1068:timer', 'i:1732365291;', '1732365291');
-INSERT INTO `cache` VALUES ('a3e6bf171da753709c5cbe51624f3af4', 'i:1;', '1732373106');
-INSERT INTO `cache` VALUES ('a3e6bf171da753709c5cbe51624f3af4:timer', 'i:1732373106;', '1732373106');
-INSERT INTO `cache` VALUES ('ca6b1752146cde4921028418f092a5a1', 'i:1;', '1732373163');
-INSERT INTO `cache` VALUES ('ca6b1752146cde4921028418f092a5a1:timer', 'i:1732373163;', '1732373163');
-INSERT INTO `cache` VALUES ('camila.jakubowski@example.net|127.0.0.1', 'i:1;', '1732365263');
-INSERT INTO `cache` VALUES ('camila.jakubowski@example.net|127.0.0.1:timer', 'i:1732365263;', '1732365263');
-INSERT INTO `cache` VALUES ('f7467ac9a803bfd7a4b9e0c0d1e5d8e9', 'i:1;', '1732373180');
-INSERT INTO `cache` VALUES ('f7467ac9a803bfd7a4b9e0c0d1e5d8e9:timer', 'i:1732373180;', '1732373180');
-INSERT INTO `cache` VALUES ('tressie45@example.com|127.0.0.1', 'i:1;', '1732365291');
-INSERT INTO `cache` VALUES ('tressie45@example.com|127.0.0.1:timer', 'i:1732365291;', '1732365291');
 
 -- ----------------------------
 -- Table structure for `cache_locks`
@@ -313,35 +362,30 @@ DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
+  `absence_id` bigint(20) NOT NULL,
   `date_permission` date NOT NULL,
   `reason` text NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `is_approved` tinyint(1) NOT NULL DEFAULT 0,
+  `approved_by` bigint(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `permissions_user_id_foreign` (`user_id`),
   CONSTRAINT `permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of permissions
 -- ----------------------------
-INSERT INTO `permissions` VALUES ('1', '10', '2005-01-03', 'Exercitationem dolor voluptate molestiae saepe. Suscipit sed inventore non voluptatem quo fugit nulla. Ab incidunt nostrum doloribus.', 'https://via.placeholder.com/640x480.png/001111?text=et', '0', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('2', '10', '2017-03-01', 'Aperiam deserunt rerum non dignissimos reiciendis. Quae expedita voluptas voluptas nostrum. Unde voluptas doloribus ratione qui expedita atque. Accusamus nihil enim et quas neque.', 'https://via.placeholder.com/640x480.png/00aacc?text=et', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('3', '10', '2009-08-07', 'Saepe velit natus sed eos unde rerum reiciendis. At beatae asperiores quo aut. Reprehenderit officia eos minus sapiente quos. Assumenda magnam minima explicabo ducimus unde consectetur.', 'https://via.placeholder.com/640x480.png/0066aa?text=deserunt', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('4', '10', '2019-03-21', 'Est enim molestiae ex quos tempore delectus. Reprehenderit alias ad beatae ipsa id nobis aut voluptas. Et non quasi velit quam. Culpa reprehenderit vel nulla consequatur odit dolore et.', 'https://via.placeholder.com/640x480.png/00ff55?text=magnam', '0', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('5', '10', '2022-06-28', 'Explicabo et dolores qui totam illum. Consequatur sequi dolores quod ipsum. Ex et ipsum unde. Commodi deserunt doloribus vel possimus suscipit quo.', 'https://via.placeholder.com/640x480.png/003366?text=modi', '0', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('6', '10', '1998-03-31', 'Et temporibus nihil rem illo atque neque est. Et veritatis error recusandae qui aut. Maiores nesciunt facilis tenetur modi. Facere explicabo quos id ut quas.', 'https://via.placeholder.com/640x480.png/006622?text=illum', '0', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('7', '10', '2016-06-25', 'Porro alias iste reprehenderit accusantium hic assumenda. Non placeat impedit beatae dolore in quam ullam. Sequi soluta voluptatem consequatur explicabo tenetur et rerum. Laboriosam ut eum natus.', 'https://via.placeholder.com/640x480.png/001122?text=et', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('8', '10', '1999-05-17', 'Dolorum quam ipsa consectetur voluptatum dolor aut. Iusto at et nostrum et. Est culpa veniam ex nemo sed. Nemo perspiciatis praesentium corporis.', 'https://via.placeholder.com/640x480.png/00eeff?text=ut', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('9', '10', '1985-04-11', 'Rem architecto numquam facilis ut harum. Laboriosam nulla qui nisi. In tenetur eum sapiente et optio nobis rerum hic. Nisi dolores expedita expedita explicabo qui.', 'https://via.placeholder.com/640x480.png/0088ee?text=magnam', '0', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('10', '10', '1970-08-01', 'Amet quia ipsum aut fugiat quia quia. Eum ut et voluptas officiis amet a.', 'https://via.placeholder.com/640x480.png/0033aa?text=et', '0', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('11', '10', '2011-04-21', 'Provident nesciunt recusandae quod et dolore velit nemo. Tempore architecto est voluptatem. Harum aliquam architecto nemo distinctio cum. Asperiores modi ut et et et est magnam.', 'https://via.placeholder.com/640x480.png/0055ff?text=quis', '0', '2024-11-23 05:40:52', '2024-11-23 13:25:57');
-INSERT INTO `permissions` VALUES ('12', '10', '2021-10-28', 'Accusamus qui cupiditate cumque quam ipsam. In dignissimos blanditiis et commodi ullam dolores. Culpa deleniti nulla vitae esse quis modi quo. Quos adipisci quia neque rerum et.', 'https://via.placeholder.com/640x480.png/00ddaa?text=cumque', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('13', '10', '2004-08-27', 'Est et ut quidem id ad iusto. Et omnis sit consequatur ab. Et eveniet neque repudiandae occaecati mollitia perspiciatis. Dolor voluptas molestias aliquam laborum et est.', 'https://via.placeholder.com/640x480.png/0044bb?text=cum', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('14', '10', '1975-07-26', 'Officia quam inventore qui cum suscipit. Deserunt laboriosam laudantium molestiae illum sit explicabo. Molestiae nihil corrupti est distinctio debitis non.', 'https://via.placeholder.com/640x480.png/00ff33?text=illum', '1', '2024-11-23 05:40:52', '2024-11-23 05:40:52');
-INSERT INTO `permissions` VALUES ('15', '10', '2002-01-10', 'Accusantium corrupti aut dolor iure exercitationem et. Mollitia facere alias animi non. Cum pariatur et consequatur et debitis velit ut sunt. Consequatur molestiae voluptas saepe et quasi.', 'https://via.placeholder.com/640x480.png/0000aa?text=voluptatibus', '0', '2024-11-23 05:40:52', '2024-11-23 13:26:14');
+INSERT INTO `permissions` VALUES ('16', '15', '9', '2024-12-14', 'sakit', 'http://192.168.17.234:8000/storage/attendance_images/HpMAKOzLOQHzIh2U5KpLiRjA76JcBjWGekVwhsal.jpg', '1', '21', '2024-12-14 22:22:52', '2024-12-25 22:42:12');
+INSERT INTO `permissions` VALUES ('17', '11', '2', '2024-12-15', 'sakit', 'http://127.0.0.1:8000/storage/permissions_images/vb6yfnCMnBEhWLrRhPNnL5YTT3uYYWrQ5vdIwwX4.jpg', '1', '21', '2024-12-14 22:39:37', '2024-12-25 22:42:20');
+INSERT INTO `permissions` VALUES ('18', '21', '9', '2024-12-23', 'sakit', 'http://192.168.17.234:8000/storage/attendance_images/HpMAKOzLOQHzIh2U5KpLiRjA76JcBjWGekVwhsal.jpg', '1', '21', '2024-12-23 22:24:52', '2024-12-25 22:28:54');
+INSERT INTO `permissions` VALUES ('19', '11', '2', '2024-12-28', 'sakit', 'http://192.168.1.8:8000/storage/permissions_images/IUFENZxuTeWp9YkL3qZcrTFERVPrXbrqM9E5HgvW.jpg', '1', '21', '2024-12-28 10:53:32', '2024-12-28 22:59:19');
+INSERT INTO `permissions` VALUES ('20', '21', '11', '2024-12-28', 'yhcghyf', 'http://192.168.1.8:8000/storage/permissions_images/A1Wvhcdy1UXf4Wk9i43HNpO7sVoePPI6HfEY53fs.jpg', '1', '23', '2024-12-28 11:02:48', '2024-12-28 13:17:00');
+INSERT INTO `permissions` VALUES ('21', '23', '11', '2024-12-28', 'gawai nikah', 'http://192.168.1.8:8000/storage/permissions_images/5zY5dzSfnzyz7918miv1qu6nCV3hrLGOdIGxizbX.jpg', '1', '21', '2024-12-28 13:18:15', '2024-12-28 13:21:08');
+INSERT INTO `permissions` VALUES ('22', '21', '11', '2024-12-28', 'izin lagi', 'http://192.168.1.8:8000/storage/permissions_images/zgBVkB67fVYoJwnZ9L8KYmmLiVSj2d3bfEEKwr2O.jpg', '1', '23', '2024-12-28 13:39:19', '2024-12-28 22:18:04');
+INSERT INTO `permissions` VALUES ('23', '24', '3', '2024-12-29', 'healing', 'http://192.168.0.3:8000/storage/permissions_images/19f89XdMjIuS6FwMoEs53hpngcjyTOIG6fBxR5Bl.jpg', '1', '21', '2024-12-29 14:37:40', '2024-12-29 14:38:27');
 
 -- ----------------------------
 -- Table structure for `personal_access_tokens`
@@ -361,11 +405,37 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of personal_access_tokens
 -- ----------------------------
+INSERT INTO `personal_access_tokens` VALUES ('1', 'App\\Models\\User', '11', 'auth_token', '732b993f3ac7c9992038ac15852821d95bf23da76a951050bd5947684fb2392e', '[\"*\"]', null, null, '2024-12-07 01:27:04', '2024-12-07 01:27:04');
+INSERT INTO `personal_access_tokens` VALUES ('2', 'App\\Models\\User', '11', 'auth_token', '4a1052dfd2668702ab46c932f16385fbfd45ca04a3ec736b912a2d49b362fe07', '[\"*\"]', null, null, '2024-12-07 01:27:18', '2024-12-07 01:27:18');
+INSERT INTO `personal_access_tokens` VALUES ('3', 'App\\Models\\User', '11', 'auth_token', '1798b87a6c59688481ddd8f6a0564dea4d9887bdf66f2bae54cdb6cd95658d7f', '[\"*\"]', null, null, '2024-12-07 01:27:46', '2024-12-07 01:27:46');
+INSERT INTO `personal_access_tokens` VALUES ('4', 'App\\Models\\User', '11', 'auth_token', '83cb1e06fbcbf0d3b993a0a04122c78b0994e7edaadaf81c0a2d42e024675604', '[\"*\"]', null, null, '2024-12-07 01:28:23', '2024-12-07 01:28:23');
+INSERT INTO `personal_access_tokens` VALUES ('5', 'App\\Models\\User', '11', 'auth_token', 'ab8ac2231e3edd43e0d8f19cb866429cb01cbb6c31d3ffd26ba9378284a757e0', '[\"*\"]', null, null, '2024-12-07 01:31:34', '2024-12-07 01:31:34');
+INSERT INTO `personal_access_tokens` VALUES ('6', 'App\\Models\\User', '11', 'auth_token', 'a2ccfb30ebf3a02b1bc52dfeccbca731428c0901233cf3b779c29ea057657098', '[\"*\"]', null, null, '2024-12-07 01:31:50', '2024-12-07 01:31:50');
+INSERT INTO `personal_access_tokens` VALUES ('7', 'App\\Models\\User', '11', 'auth_token', 'd9c728876efeeb5dfe00e317c2c85916e85fbb40c573044ca0a0f5aa1396a229', '[\"*\"]', null, null, '2024-12-07 01:32:15', '2024-12-07 01:32:15');
+INSERT INTO `personal_access_tokens` VALUES ('8', 'App\\Models\\User', '11', 'auth_token', '3917847ed073498ef67ecfbc8974a6ef568cecea2498b0e8e6fe89d95833277e', '[\"*\"]', null, null, '2024-12-07 01:32:53', '2024-12-07 01:32:53');
+INSERT INTO `personal_access_tokens` VALUES ('9', 'App\\Models\\User', '11', 'auth_token', 'ea7d513640d7fe030708cc7fdfbb6adce15c69cf48612075a0b710f3e25b0e49', '[\"*\"]', null, null, '2024-12-07 01:33:09', '2024-12-07 01:33:09');
+INSERT INTO `personal_access_tokens` VALUES ('10', 'App\\Models\\User', '11', 'auth_token', '01c155098760d0b4d6aeedd43070cbb748c026132e3db990f2468134fb28cc7c', '[\"*\"]', null, null, '2024-12-07 01:33:31', '2024-12-07 01:33:31');
+INSERT INTO `personal_access_tokens` VALUES ('12', 'App\\Models\\User', '11', 'auth_token', '803f36f876368a1ea4b4ceb29077307711d539b70161c18614db04dc67696a9d', '[\"*\"]', null, null, '2024-12-07 01:35:32', '2024-12-07 01:35:32');
+INSERT INTO `personal_access_tokens` VALUES ('13', 'App\\Models\\User', '11', 'auth_token', '7c0885d5d280efaed5dcd533ac94fbff3f8870504bec35856d4233f27b1d5008', '[\"*\"]', null, null, '2024-12-07 01:44:04', '2024-12-07 01:44:04');
+INSERT INTO `personal_access_tokens` VALUES ('14', 'App\\Models\\User', '11', 'auth_token', '098e7e5f1ec98dc850c61a508d46a7c677e6397d4a64bef409967f725cd9813d', '[\"*\"]', null, null, '2024-12-07 01:44:36', '2024-12-07 01:44:36');
+INSERT INTO `personal_access_tokens` VALUES ('15', 'App\\Models\\User', '11', 'auth_token', 'e0a39d7f3cf619bc270841b431ecfccd52755c726e7b1c664770433f1bafef59', '[\"*\"]', null, null, '2024-12-07 01:47:17', '2024-12-07 01:47:17');
+INSERT INTO `personal_access_tokens` VALUES ('16', 'App\\Models\\User', '11', 'auth_token', 'bed689f19155572a846a7c1be2f7c793ea93ef2132d97452f3f82a2162830281', '[\"*\"]', null, null, '2024-12-07 01:51:20', '2024-12-07 01:51:20');
+INSERT INTO `personal_access_tokens` VALUES ('17', 'App\\Models\\User', '11', 'auth_token', 'f299d2ec5408ef4eca78db64032fd44af76e8c471c6424074f44fc411fcae8fd', '[\"*\"]', null, null, '2024-12-07 01:55:15', '2024-12-07 01:55:15');
+INSERT INTO `personal_access_tokens` VALUES ('18', 'App\\Models\\User', '11', 'auth_token', 'dc15a3495573129744f5fc9a6d101cd78dbb7276e42af96158f2f897a83cb11a', '[\"*\"]', null, null, '2024-12-07 02:13:57', '2024-12-07 02:13:57');
+INSERT INTO `personal_access_tokens` VALUES ('19', 'App\\Models\\User', '12', 'auth_token', '4817d6f4b0e7abf9d03f551da3372616012ef8856a31e9b24c49852de75d2c19', '[\"*\"]', '2024-12-07 02:39:25', null, '2024-12-07 02:25:30', '2024-12-07 02:39:25');
+INSERT INTO `personal_access_tokens` VALUES ('20', 'App\\Models\\User', '13', 'auth_token', 'f764fa546b24c40bfb6066f47f6acba9f093de2e58b8ece1ae5a2d46823df9aa', '[\"*\"]', null, null, '2024-12-07 02:40:26', '2024-12-07 02:40:26');
+INSERT INTO `personal_access_tokens` VALUES ('21', 'App\\Models\\User', '13', 'auth_token', 'd9d33bc0d0608534b80c73c1db09d30065300f72b5b40a0a8c8dd46c9a0b2947', '[\"*\"]', null, null, '2024-12-07 02:40:40', '2024-12-07 02:40:40');
+INSERT INTO `personal_access_tokens` VALUES ('22', 'App\\Models\\User', '13', 'auth_token', 'a66168a1063d0d7b362c61167c5acaa66080bb83eaa223969b85a55ef7c3cedb', '[\"*\"]', '2024-12-07 03:07:13', null, '2024-12-07 03:05:32', '2024-12-07 03:07:13');
+INSERT INTO `personal_access_tokens` VALUES ('23', 'App\\Models\\User', '13', 'auth_token', '46009a380b7e645b16a5d6366af09308f599c1ccaa34abb66931f99b0628a707', '[\"*\"]', null, null, '2024-12-07 03:30:49', '2024-12-07 03:30:49');
+INSERT INTO `personal_access_tokens` VALUES ('24', 'App\\Models\\User', '13', 'auth_token', '3c50d150de1ce8024f6675759d4119f02306f726b87924ed4cf803cb279b41f7', '[\"*\"]', null, null, '2024-12-07 03:34:23', '2024-12-07 03:34:23');
+INSERT INTO `personal_access_tokens` VALUES ('25', 'App\\Models\\User', '13', 'auth_token', '36108e7eca1fcf236c39db5d5d156de69ea2b50bdd56654a77330c05c7193301', '[\"*\"]', null, null, '2024-12-07 03:43:34', '2024-12-07 03:43:34');
+INSERT INTO `personal_access_tokens` VALUES ('26', 'App\\Models\\User', '12', 'auth_token', '6bedd148f08a7d2df5d19f0f5c872347cfdf7ea00737a668ca1d1d2a50cfdcc7', '[\"*\"]', null, null, '2024-12-07 03:43:53', '2024-12-07 03:43:53');
+INSERT INTO `personal_access_tokens` VALUES ('27', 'App\\Models\\User', '12', 'auth_token', 'cff46c4128cfc3b35359765e331396a55c9b5131ba12ad36ae19c365f68a04db', '[\"*\"]', null, null, '2024-12-07 03:44:58', '2024-12-07 03:44:58');
 
 -- ----------------------------
 -- Table structure for `sessions`
@@ -386,8 +456,9 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('8dnu2NnMUHgrVK02V4XYAvZMcATQwwjzXsFyZSbB', '14', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoialY2RzRXR2laU2g2V2NROVJROGhUbGtmVnN6bUNYVXN0WmE5U3RrNyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTQ7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hYnNlbmNlcy9jcmVhdGUiO319', '1732886326');
-INSERT INTO `sessions` VALUES ('phDvhjZXdRBaZxcwKjIxHxhMkRtyXjDHT09qA78R', '14', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS3dKSGJXSGdSZ3FSTGxuT2ltVmZBNGtQTjZxWEl2VGxQY1NjMm4yMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hdHRlbmRhbmNlcy9leHBvcnQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxNDt9', '1732714353');
+INSERT INTO `sessions` VALUES ('NBGwiebYgMRvfIAchH0w5hGIpHuegC1AyLd81cjF', '22', '192.168.0.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieFVqRkxoRXo5UlVlWmtkbjBzdnZBblE2OVVaQmowRXlsMjNMRkQ3VSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xOTIuMTY4LjAuNDo4MDAwL3VzZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyMjt9', '1735721875');
+INSERT INTO `sessions` VALUES ('qG9e0HojGrFBGk0D1srH2ITKnLAzeNhSal3hBJvh', '22', '192.168.0.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiR0JMMjU0Qm84S2liVW5lRkE2ZnRBdjExN2I2UmpURDBCMUFObEVscSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNToiaHR0cDovLzE5Mi4xNjguMC40OjgwMDAvYXR0ZW5kYW5jZXMiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyODoiaHR0cDovLzE5Mi4xNjguMC40OjgwMDAvdXNlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjIyO30=', '1735575492');
+INSERT INTO `sessions` VALUES ('zsOJui8AZ50ZQb0G0QPpn8BpHJsqOviONJ0YRYxG', '22', '172.20.10.5', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYjdqYlhkdnA5Sllmc2dXdkJabkZEUVpBaE9VenFpYWdEcDVPRklpdCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xNzIuMjAuMTAuNTo4MDAwL3VzZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyMjt9', '1735573496');
 
 -- ----------------------------
 -- Table structure for `users`
@@ -416,7 +487,7 @@ CREATE TABLE `users` (
   `gender` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
@@ -431,9 +502,19 @@ INSERT INTO `users` VALUES ('7', '1', 'Emiliano Cummerata', 'tressie45@example.c
 INSERT INTO `users` VALUES ('8', '1', 'Blaise Walter', 'adrianna.kreiger@example.net', '2024-11-23 05:40:52', '$2y$12$/6n6VrjWiy54FFhaNlcCnetHrLAnaAlH2eGC2omAyvvK4bFROKomm', null, null, null, 'WBAVfL51Pq', null, '2024-11-23 05:40:52', '2024-11-23 05:40:52', null, 'IT', null, null, null, 'user', '');
 INSERT INTO `users` VALUES ('9', '1', 'Makayla Wilkinson', 'beryl48@example.net', '2024-11-23 05:40:52', '$2y$12$/6n6VrjWiy54FFhaNlcCnetHrLAnaAlH2eGC2omAyvvK4bFROKomm', null, null, null, 'TUcI0ZpeqB', null, '2024-11-23 05:40:52', '2024-11-23 05:40:52', null, 'IT', null, null, null, 'user', '');
 INSERT INTO `users` VALUES ('10', '1', 'Dr. Alexandre Willms', 'camila.jakubowski@example.net', '2024-11-23 05:40:52', '$2y$12$/6n6VrjWiy54FFhaNlcCnetHrLAnaAlH2eGC2omAyvvK4bFROKomm', null, null, null, 'WMVJDWk99s', null, '2024-11-23 05:40:52', '2024-11-23 05:40:52', null, 'IT', null, null, null, 'user', '');
-INSERT INTO `users` VALUES ('11', '2', 'Nico', 'nico@gmail.com', '2024-11-23 05:40:52', '$2y$12$5FOCmFZ5ADtSQk.p0V1wL.YLitaA797sABP4YBJJtSR6jlcAvfVdW', null, null, null, 'QBuxZJA0sm', null, '2024-11-23 05:40:52', '2024-11-24 05:09:58', null, 'JL Ijen', null, null, '0812345261736', 'user', 'male');
+INSERT INTO `users` VALUES ('11', '2', 'Nico', 'nico@gmail.com', '2024-11-23 05:40:52', '$2y$12$5FOCmFZ5ADtSQk.p0V1wL.YLitaA797sABP4YBJJtSR6jlcAvfVdW', null, null, null, 'QBuxZJA0sm', null, '2024-11-23 05:40:52', '2024-12-29 23:43:55', null, 'Jl soehat', null, null, '08123456789', 'user', 'male');
 INSERT INTO `users` VALUES ('12', '2', 'daniel', 'daniel@gmail.com', null, '$2y$12$oH.0KIaxWWDk5tqYypEVqOzmIzuXZhCPGp6NXRLNCDvsR/u.8jqtu', null, null, null, null, null, '2024-11-23 12:41:28', '2024-11-24 05:08:21', null, 'Jl Pisang Candi', null, null, '081233386855', 'user', 'male');
 INSERT INTO `users` VALUES ('13', '2', 'marcel', 'marcel@gmail.com', null, '$2y$12$cswp2u6tDm1zOWmPgqJxNuSiLvfBVO88E8wZ/aFu7N6eX/DyZrG7G', null, null, null, null, null, '2024-11-23 13:31:04', '2024-11-27 03:32:33', null, 'Jl. Ir rais 14 no.56', null, null, '081233386855', 'user', 'female');
-INSERT INTO `users` VALUES ('14', '1', 'mama', 'mama@gmail.com', null, '$2y$12$lGvieXuW.faEnAd6hQ.9beiLWcHYhMZ36qdpW68/5aU7B5MnonAxm', null, null, null, null, null, '2024-11-23 13:38:11', '2024-11-24 05:08:09', null, 'JL Bromo', null, null, '0812345627182', 'admin', 'female');
-INSERT INTO `users` VALUES ('15', '1', 'papa', 'papa@gmail.com', null, '$2y$12$8k0EEUwF87bwEs1w3gsQjuMsUyG5OAN8cX9LHgT7fO.a4iEyKxxIK', null, null, null, null, null, '2024-11-23 13:49:09', '2024-11-27 03:27:57', null, 'JL Welirang', null, null, '081233386855', 'employee', 'male');
+INSERT INTO `users` VALUES ('14', '5', 'mama', 'mama@gmail.com', null, '$2y$12$lGvieXuW.faEnAd6hQ.9beiLWcHYhMZ36qdpW68/5aU7B5MnonAxm', null, null, null, null, null, '2024-11-23 13:38:11', '2024-12-07 01:40:49', null, 'JL Bromo', null, null, '0812345627182', 'employee', 'female');
+INSERT INTO `users` VALUES ('15', '1', 'papa', 'papa@gmail.com', null, '$2y$12$8k0EEUwF87bwEs1w3gsQjuMsUyG5OAN8cX9LHgT7fO.a4iEyKxxIK', null, null, null, null, null, '2024-11-23 13:49:09', '2024-12-07 01:38:28', null, 'JL Welirang', null, null, '081233386855', 'user', 'male');
 INSERT INTO `users` VALUES ('21', '5', 'Dias', 'dias@gmail.com', null, '$2y$12$D5RNhvIBlbbK0hdr/pqdKu5382yoC4pYzbpKe0UrZyQB1OFDeYsW.', null, null, null, null, null, '2024-11-29 12:57:29', '2024-11-29 12:57:29', null, 'Jl. Ir rais 14 no.56', null, null, '081233386855', 'employee', 'female');
+INSERT INTO `users` VALUES ('22', '5', 'admin', 'admin@gmail.com', null, '$2y$12$w6npOs4UR78a1rvxKIoRpuK0V4BIQEx3peIce3ezSWci0GVkF0HKa', null, null, null, null, null, '2024-12-07 01:40:07', '2024-12-07 01:40:07', null, 'Jl. Bromo 33', null, null, '0823128362839', 'admin', 'male');
+INSERT INTO `users` VALUES ('23', '5', 'gawai', 'gawai@gmail.com', null, '$2y$12$AlgfyZlqbQIxpBoAfkGkd.tSEKA94FdO.rOIuWEZKaKylJqUY.mzu', null, null, null, null, null, '2024-12-28 13:15:44', '2024-12-28 13:15:44', null, 'Jl pegawai', null, null, '081234567890', 'employee', 'male');
+INSERT INTO `users` VALUES ('24', '2', 'Nia Lailati', 'Nia@gmail.com', null, '$2y$12$LkULPONv9RuvbgxE0SDUm.o5tU1R2Ik2t5fMmr3E9bjg1YuH22AJu', null, null, null, null, null, '2024-12-29 14:22:53', '2024-12-29 14:22:53', null, 'Jl nia', null, null, '0812345678990', 'user', 'female');
+INSERT INTO `users` VALUES ('25', '2', 'Nico Ardia Effendy', 'nana@gmail.com', null, '$2y$12$14n4UMjlBN3B9t0CDaQXzupy3fryykC8hH5GK6JSWTxjxHVfsz1Ze', null, null, null, null, null, '2024-12-30 08:39:21', '2025-01-01 15:20:47', null, 'jl suhat1', null, 'https://drive.google.com/uc?export=download&id=1g4i63y_jprRtnJtgDMlZbRxCLr35zYh1', '812', 'user', 'male');
+INSERT INTO `users` VALUES ('26', '2', 'Bima Bhakti', 'bima@gmail.com', null, '$2y$12$8hh9Lj/6XMhOg1puHgKjo.67kvAeC03E0YTbAqPaeSricS6s9VoSG', null, null, null, null, null, '2024-12-30 08:39:21', '2025-01-01 15:20:47', null, 'jl suhat2', null, 'https://drive.google.com/uc?export=download&id=19hQW-1HwxWCZkMHsrMxY285uivZhx-fQ', '813', 'user', 'female');
+INSERT INTO `users` VALUES ('27', '2', 'Ramadhani', 'rama@gmail.com', null, '$2y$12$k4HZhFKEqpLzDl3KYkLnAOxV8SAbz5BkDn4VAW06QAPCR.Ai8vDpi', null, null, null, null, null, '2024-12-30 08:39:21', '2025-01-01 15:20:47', null, 'jl suhat3', null, 'https://drive.google.com/uc?export=download&id=1xgH2NvHVySXAIqe2I5cg7NIrhkrG2WwV', '814', 'user', 'male');
+INSERT INTO `users` VALUES ('28', '2', 'Amelia Intan', 'amelia@gmail.com', null, '$2y$12$lo1BKNV9K3L33sx32AcDpe3dkNcg40pNOnOJ.RNg9AkidZASq0wXK', null, null, null, null, null, '2024-12-30 08:39:21', '2025-01-01 15:20:47', null, 'jl suhat4', null, 'https://drive.google.com/uc?export=download&id=1vc4BQ-Fl-23Wz-45ynHY20tl9UJ_yPgz', '815', 'user', 'male');
+INSERT INTO `users` VALUES ('29', '2', 'Namira Salsabilla', 'nam@gmail.com', null, '$2y$12$mv4LskchqTTOux79F3VkHODfhO9aqlyXzrKNqFVUTZYM0QYaAky9a', null, null, null, null, null, '2024-12-30 08:39:21', '2025-01-01 15:20:48', null, 'jl suhat5', null, 'https://drive.google.com/uc?export=download&id=13dKkoGXuuCkar85dCuVoVvfnFVYCR0rs', '816', 'user', 'female');
+INSERT INTO `users` VALUES ('32', '2', 'Nia Lailati', 'niala@gmail.com', null, '$2y$12$IdAqVe7FOAyQcr1Onqa5nefCKnORol.YQ8RbfvM59G.c2eFSXK5Nq', null, null, null, null, null, '2024-12-30 08:44:49', '2025-01-01 15:20:48', null, 'jl suhat6', null, 'https://drive.google.com/uc?export=download&id=1UHm-xq0T4ksXHYTKmdhLO1M0XZEmgQIF', '817', 'user', 'male');
+INSERT INTO `users` VALUES ('35', '2', 'Abu Bakar', 'bakar@gmail.com', null, '$2y$12$X8sQtcA5RpGi7JMb9fJirujHU8aJmjItiDxxAGD0LLPa7mDXNPIdW', null, null, null, null, null, '2025-01-01 15:20:48', '2025-01-01 15:20:48', null, 'jl suhat7', null, 'https://drive.google.com/uc?export=download&id=1UHm-xq0T4ksXHYTKmdhLO1M0XZEmgQIF', '818', 'user', 'male');
