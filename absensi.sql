@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2025-01-03 18:33:42
+Date: 2025-01-08 22:10:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -379,7 +379,7 @@ CREATE TABLE `permissions` (
 -- Records of permissions
 -- ----------------------------
 INSERT INTO `permissions` VALUES ('16', '15', '9', '2024-12-14', 'sakit', 'http://192.168.17.234:8000/storage/attendance_images/HpMAKOzLOQHzIh2U5KpLiRjA76JcBjWGekVwhsal.jpg', '1', '21', '2024-12-14 22:22:52', '2024-12-25 22:42:12');
-INSERT INTO `permissions` VALUES ('17', '11', '2', '2024-12-15', 'sakit', 'http://127.0.0.1:8000/storage/permissions_images/vb6yfnCMnBEhWLrRhPNnL5YTT3uYYWrQ5vdIwwX4.jpg', '1', '21', '2024-12-14 22:39:37', '2024-12-25 22:42:20');
+INSERT INTO `permissions` VALUES ('17', '11', '2', '2024-12-15', 'sakit', 'http://127.0.0.1:8000/storage/permissions_images/vb6yfnCMnBEhWLrRhPNnL5YTT3uYYWrQ5vdIwwX4.jpg', '0', '21', '2024-12-14 22:39:37', '2024-12-25 22:42:20');
 INSERT INTO `permissions` VALUES ('18', '21', '9', '2024-12-23', 'sakit', 'http://192.168.17.234:8000/storage/attendance_images/HpMAKOzLOQHzIh2U5KpLiRjA76JcBjWGekVwhsal.jpg', '1', '21', '2024-12-23 22:24:52', '2024-12-25 22:28:54');
 INSERT INTO `permissions` VALUES ('19', '11', '2', '2024-12-28', 'sakit', 'http://192.168.1.8:8000/storage/permissions_images/IUFENZxuTeWp9YkL3qZcrTFERVPrXbrqM9E5HgvW.jpg', '1', '21', '2024-12-28 10:53:32', '2024-12-28 22:59:19');
 INSERT INTO `permissions` VALUES ('20', '21', '11', '2024-12-28', 'yhcghyf', 'http://192.168.1.8:8000/storage/permissions_images/A1Wvhcdy1UXf4Wk9i43HNpO7sVoePPI6HfEY53fs.jpg', '1', '23', '2024-12-28 11:02:48', '2024-12-28 13:17:00');
@@ -456,9 +456,9 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('NBGwiebYgMRvfIAchH0w5hGIpHuegC1AyLd81cjF', '22', '192.168.0.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieFVqRkxoRXo5UlVlWmtkbjBzdnZBblE2OVVaQmowRXlsMjNMRkQ3VSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xOTIuMTY4LjAuNDo4MDAwL3VzZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyMjt9', '1735721875');
-INSERT INTO `sessions` VALUES ('qG9e0HojGrFBGk0D1srH2ITKnLAzeNhSal3hBJvh', '22', '192.168.0.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiR0JMMjU0Qm84S2liVW5lRkE2ZnRBdjExN2I2UmpURDBCMUFObEVscSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNToiaHR0cDovLzE5Mi4xNjguMC40OjgwMDAvYXR0ZW5kYW5jZXMiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyODoiaHR0cDovLzE5Mi4xNjguMC40OjgwMDAvdXNlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjIyO30=', '1735575492');
-INSERT INTO `sessions` VALUES ('zsOJui8AZ50ZQb0G0QPpn8BpHJsqOviONJ0YRYxG', '22', '172.20.10.5', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYjdqYlhkdnA5Sllmc2dXdkJabkZEUVpBaE9VenFpYWdEcDVPRklpdCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xNzIuMjAuMTAuNTo4MDAwL3VzZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyMjt9', '1735573496');
+INSERT INTO `sessions` VALUES ('4gxN4Qy5KiafbCFc0aQmjpucTEUlL516xCnyVY9y', '22', '192.168.0.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiU2lYQWZKclpoQlRNeFFMTFI0VkJRamlGbmRaMjE2TUNLZXpCZjBRWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzU6Imh0dHA6Ly8xOTIuMTY4LjAuNDo4MDAwL2F0dGVuZGFuY2VzP2NhdGVnb3J5X2lkPTImZGF0ZT0mbW9udGg9MjAyNC0xMiZuYW1lPSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjIyO30=', '1736084622');
+INSERT INTO `sessions` VALUES ('hF2EX7kpy4FU4ivpmJ9NF8y5QsR46CBakofIF2PX', '22', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoia3hpVkJ3SVNMbmdEeHgzZk9SMENpcU1HdEpHdXpBQjVBY09lcWprTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hdHRlbmRhbmNlcz9jYXRlZ29yeV9pZD0yJmRhdGU9Jm1vbnRoPTIwMjQtMTImbmFtZT0iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyMjt9', '1736239446');
+INSERT INTO `sessions` VALUES ('XNHfwWqejQHtODPv6U2xfdwTJP7jv8RmKNJQRBvd', '22', '192.168.0.2', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTzNmcmNYWXcyT0pDeE5oSFBkZ0ZtY0pzcTFGNlpVUFE0dWk5eDZ3RCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xOTIuMTY4LjAuMjo4MDAwL2NhdGVnb3JpZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyMjt9', '1736348919');
 
 -- ----------------------------
 -- Table structure for `users`

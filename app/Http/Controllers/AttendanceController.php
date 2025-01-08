@@ -196,12 +196,20 @@ public function exportExcel(Request $request)
         
                 // Check for permission on this date
                 $userPermissions = $permissions[$userId] ?? collect();
-                $hasPermission = $userPermissions->where('date_permission', $date)->isNotEmpty();
+
+                $hasPermission = $userPermissions->where('date_permission', $date)->first();
         
                 if ($hasPermission) {
-                    $sheet->getStyle("{$column}{$row}")->getFill()
-                        ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                        ->getStartColor()->setARGB('FFFFFF00'); // Kuning
+
+                    if ($hasPermission->is_approved == 1) {
+                        $sheet->getStyle("{$column}{$row}")->getFill()
+                            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                            ->getStartColor()->setARGB('FFFFFF00'); // Kuning
+                    } else {
+                        $sheet->getStyle("{$column}{$row}")->getFill()
+                            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                            ->getStartColor()->setARGB('FFFF0000'); // Merah
+                    }
                     continue;
                 }
         
